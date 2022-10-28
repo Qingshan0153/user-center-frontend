@@ -48,6 +48,8 @@ export async function getInitialState(): Promise<{
   // 如果是无需登录的页面，执行
   if (writeList.includes(history.location.pathname)) {
     return {
+      // @ts-ignore
+      fetchUserInfo,
       settings: defaultSettings,
     };
 
@@ -55,6 +57,8 @@ export async function getInitialState(): Promise<{
   const currentUser = await fetchUserInfo();
 
   return {
+    // @ts-ignore
+    fetchUserInfo,
     currentUser,
     settings: defaultSettings,
   };
